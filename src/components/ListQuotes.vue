@@ -28,9 +28,21 @@
           </span>
         </td>
         <td>
-          <a href="#" class="btn btn-primary btn-sm tooltip tooltip-left"
-          data-tooltip="Seguir"> 
-          <i class="icon icon-plus"></i>          
+          <a
+            v-if="!listenQuotes.includes(key)"
+            class="btn btn-primary btn-sm tooltip tooltip-left"
+            data-tooltip="Seguir"
+            @click="$emit('listen', key)"
+          >
+            <i class="icon icon-plus"></i>
+          </a>
+          <a
+          v-else
+          class="btn btn-error btn-sm tooltip tooltip-left"
+          data-tooltip="Remover"
+          @click="$emit('unlisten', key)"
+          >
+          <i class="icon icon-minus"></i>
           </a>
         </td>
       </tr>
@@ -40,7 +52,10 @@
 
 <script>
 export default {
-  props: { quotes: { type: Object, required: true } },
-  listenQuotes: { type: Array, required: true },
+  props: {
+    quotes: { type: Object, required: true },
+    listenQuotes: { type: Array, required: true },
+  },
+  emits: ['listen', 'unlisten']
 };
 </script>

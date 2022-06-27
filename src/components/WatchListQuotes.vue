@@ -1,5 +1,6 @@
 <template>
-  <ListQuotes
+<div>
+    <ListQuotes
     :quotes="quotes"
     :listen-quotes="listenQuotes"
     @unlisten="onUnListen"
@@ -9,6 +10,7 @@
       Atualizará novamente em <b>{{ nextUpdateTime }} segundos</b>
     </cite>
   </div>
+</div>
 </template>
 
 <script>
